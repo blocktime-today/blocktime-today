@@ -1,7 +1,5 @@
 <template>
-  <p>
-    <span>Info: {{ info }}</span>
-  </p>
+  <h1>{{ info.data.height }}</h1>
 </template>
 
 <script>
@@ -17,7 +15,7 @@ export default {
   },
   mounted () {
     axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .get('https://api.blockcypher.com/v1/btc/main')
       .then(response => (this.info = response))
       .catch(error => console.log(error))
   }

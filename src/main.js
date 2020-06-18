@@ -4,6 +4,6 @@ import HelloWorld from './components/HelloWorld'
 Vue.component('helloWorld', HelloWorld)
 
 /* eslint-disable no-new */
-new Vue({
+const vm = new Vue({
   el: '#app'
 })

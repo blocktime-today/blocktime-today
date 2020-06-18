@@ -1,10 +1,26 @@
 <template>
-  <h1>Jekyll-Vue Template</h1>
+  <p>
+    <span>Info: {{ info }}</span>
+  </p>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'HelloWorld'
+  name: 'HelloWorld',
+  props: ['blocktime'],
+  data () {
+    return {
+      info: "000000"
+    }
+  },
+  mounted () {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response))
+      .catch(error => console.log(error))
+  }
 }
 </script>
 

@@ -13,11 +13,20 @@ export default {
       info: "000000"
     }
   },
-  mounted () {
-    axios
-      .get('https://api.blockcypher.com/v1/btc/main')
-      .then(response => (this.info = response))
-      .catch(error => console.log(error))
+  created () {
+    this.fetchBlockTime();
+    this.timer = setInterval(this.fetchBlockTime, 30000)
+  },
+  methods: {
+    fetchBlockTime () {
+      axios
+        .get('https://api.blockcypher.com/v1/btc/main')
+        .then(response => (this.info = response))
+        .catch(error => console.log(error))
+    }
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
   }
 }
 </script>

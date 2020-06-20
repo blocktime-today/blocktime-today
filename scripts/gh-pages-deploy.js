@@ -4,9 +4,6 @@
   (async () => {
     try {
       await execa("git", ["checkout", "--orphan", "gh-pages"]);
-      console.log("Installing...");
-      await execa("npm", ["i"]);
-      await execa("bundle", ["install"]);
       console.log("Building...");
       await execa("npm", ["run", "build"]);
       const folderName = fs.existsSync("dist") ? "dist" : "build";

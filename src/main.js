@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import HelloWorld from './components/HelloWorld'
+import BlockTime from './components/BlockTime'
 
-Vue.component('helloWorld', HelloWorld)
+Vue.component('blockTime', BlockTime)
 
 /* eslint-disable no-new */
 new Vue({

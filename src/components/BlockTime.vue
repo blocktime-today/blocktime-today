@@ -6,7 +6,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'HelloWorld',
+  name: 'BlockTime',
   props: ['blocktime'],
   data () {
     return {

@@ -17,6 +17,7 @@ jobs:
         uses: ruby/setup-ruby@v1.38.0
         with:
           ruby-version: 2.6.3
+          bundler-cache: true
 
       - name: Checkout branch
         uses: actions/checkout@v2

@@ -12,7 +12,7 @@
       await execa("git", ["--work-tree", "_site", "commit", "-m", "gh-pages"]);
       console.log("Pushing to gh-pages...");
       await execa("git", ["push", "origin", "HEAD:gh-pages", "--force"]);
-      await execa("rm", ["-r", folderName]);
+      await execa("rm", ["-r", "_site"]);
       await execa("git", ["checkout", "-f", "master"]);
       await execa("git", ["branch", "-D", "gh-pages"]);
       console.log("Successfully deployed");

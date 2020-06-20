@@ -26,6 +26,7 @@ export default {
 $gray: darkslategrey;
 h1 {
   color: $gray;
-  font-size: 2rem;
+  font-size: 5rem;
+  text-align: center;
 }
 </style>

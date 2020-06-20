@@ -5,9 +5,15 @@
   "main": "index.js",
   "homepage": "/blocktime-today/",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "jekyll:watch": "bundle exec jekyll build --watch --incremental",
+    "jekyll:build": "bundle exec jekyll build",
+    "serve": "browser-sync start --config browser-sync.js",
+    "start": "npm run jekyll:watch & npm run serve",
+    "watch": "cross-env NODE_ENV=development webpack --watch",
     "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
-  },
-  "keywords": [
+  },  "keywords": [
     "jekyll",
     "vue",
     "ssg"

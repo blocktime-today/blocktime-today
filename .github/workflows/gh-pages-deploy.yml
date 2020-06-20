@@ -20,7 +20,9 @@ jobs:
 
       - name: Bundler CLI
         uses: CultureHQ/actions-bundler@v1.0.0
-        run: install
+
+      - name: Bundle install
+        run: bundle install
 
       - name: Run deploy script
         run: |

@@ -37,6 +37,7 @@ $orange: #FF7F00;
 h1 {
   color: $orange;
   font-size: 5rem;
+  font-family: 'Press Start 2P', cursive;
   text-align: center;
 }
 </style>

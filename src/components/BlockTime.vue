@@ -19,9 +19,11 @@ export default {
   },
   methods: {
     fetchBlockTime () {
+      const AuthStr = 'token '.concat('728294a0eae698a3ba26c27040cf1b2939ef2434')
+      const URL = 'https://shop.dergigi.com/api/v1/server/info'
       axios
-        .get('https://api.blockcypher.com/v1/btc/main')
-        .then(response => (this.info = response))
+        .get(URL, { headers: { Authorization: AuthStr } })
+        .then(response => (this.info = response['syncStatus']['chainHeight']))
         .catch(error => console.log(error))
     }
   },

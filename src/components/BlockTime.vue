@@ -32,9 +32,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$gray: darkslategrey;
+$orange: #FF7F00;
+
 h1 {
-  color: $gray;
+  color: $orange;
   font-size: 5rem;
   text-align: center;
 }

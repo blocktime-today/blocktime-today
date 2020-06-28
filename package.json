@@ -13,7 +13,8 @@
     "start": "npm run jekyll:watch & npm run serve",
     "watch": "cross-env NODE_ENV=development webpack --watch",
     "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
-  },  "keywords": [
+  },
+  "keywords": [
     "jekyll",
     "vue",
     "ssg"

@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ info.data.height }}</h1>
+  <h1>{{ blocktimeString }}</h1>
 </template>
 
 <script>
@@ -7,10 +7,9 @@ import axios from 'axios'
 
 export default {
   name: 'BlockTime',
-  props: ['blocktime'],
-  data () {
+  data() {
     return {
-      info: "000000"
+      blocktime: "000000"
     }
   },
   created () {
@@ -21,8 +20,13 @@ export default {
     fetchBlockTime () {
       axios
         .get('https://api.blockcypher.com/v1/btc/main')
-        .then(response => (this.info = response))
+        .then(response => (this.blocktime = response.data.height.toString()))
         .catch(error => console.log(error))
+    }
+  },
+  computed: {
+    blocktimeString: function () {
+      return this.blocktime.slice(0, -3) + ":" + this.blocktime.slice(-3)
     }
   },
   beforeDestroy () {

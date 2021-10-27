@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     blocktimeString: function () {
-      return this.blocktime.slice(0, -3) + ":" + this.blocktime.slice(-3)
+      return this.blocktime.slice(0, -3) + "," + this.blocktime.slice(-3)
     }
   },
   beforeDestroy () {

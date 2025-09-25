@@ -20,14 +20,14 @@ jobs:
       - name: Setup Ruby, JRuby and TruffleRuby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: '3.1'
           bundler-cache: true
 
       - name: Install npm dependencies
         run: npm ci
 
       - name: Bundle install
-        run: bundle install
+        run: bundle install --jobs 4
 
       - name: Run deploy script
         run: |

@@ -17,11 +17,17 @@ export default {
     this.timer = setInterval(this.fetchBlockTime, 30000)
   },
   methods: {
-    fetchBlockTime () {
-      axios
-        .get('https://api.blockcypher.com/v1/btc/main')
-        .then(response => (this.blocktime = response.data.height.toString()))
-        .catch(error => console.log(error))
+    async fetchBlockTime () {
+      try {
+        const response = await axios.get('https://mempool.space/api/blocks/tip/height', {
+          headers: {
+            'Accept': 'text/plain'
+          }
+        })
+        this.blocktime = response.data.toString()
+      } catch (error) {
+        console.error('Failed to fetch block height', error)
+      }
     }
   },
   computed: {

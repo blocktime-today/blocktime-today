@@ -8,6 +8,9 @@ jobs:
     name: Deploying to gh-pages
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Node.js for use with actions
         uses: actions/setup-node@v4
         with:
@@ -20,11 +23,8 @@ jobs:
           ruby-version: 3.1
           bundler-cache: true
 
-      - name: Checkout branch
-        uses: actions/checkout@v4
-
       - name: Install npm dependencies
-        run: npm install
+        run: npm ci
 
       - name: Bundle install
         run: bundle install

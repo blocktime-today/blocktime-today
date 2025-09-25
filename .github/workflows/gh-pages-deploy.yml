@@ -27,9 +27,11 @@ jobs:
         run: npm ci
 
       - name: Bundle install
-        run: bundle install --jobs 4
+        run: bundle install --path vendor/bundle
 
       - name: Run deploy script
+        env:
+          BUNDLE_PATH: vendor/bundle
         run: |
           git config user.name "dergigi" && git config user.email "dergigi@pm.me"
           npm run gh-pages-deploy

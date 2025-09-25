@@ -2,44 +2,41 @@
   <h1>{{ blocktimeString }}</h1>
 </template>
 
-<script>
+<script setup>
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import axios from 'axios'
 
-export default {
-  name: 'BlockTime',
-  data() {
-    return {
-      blocktime: "000000"
-    }
-  },
-  created () {
-    this.fetchBlockTime();
-    this.timer = setInterval(this.fetchBlockTime, 30000)
-  },
-  methods: {
-    async fetchBlockTime () {
-      try {
-        const response = await axios.get('https://mempool.space/api/blocks/tip/height', {
-          headers: {
-            'Accept': 'text/plain'
-          },
-          transformResponse: [data => data]
-        })
-        this.blocktime = response.data
-      } catch (error) {
-        console.error('Failed to fetch block height', error)
-      }
-    }
-  },
-  computed: {
-    blocktimeString: function () {
-      return this.blocktime.slice(0, -3) + "," + this.blocktime.slice(-3)
-    }
-  },
-  beforeDestroy () {
-    clearInterval(this.timer)
+const blocktime = ref('000000')
+const timer = ref(null)
+
+const fetchBlockTime = async () => {
+  try {
+    const response = await axios.get('https://mempool.space/api/blocks/tip/height', {
+      headers: {
+        'Accept': 'text/plain'
+      },
+      transformResponse: [data => data]
+    })
+    blocktime.value = response.data
+  } catch (error) {
+    console.error('Failed to fetch block height', error)
   }
 }
+
+const blocktimeString = computed(() => (
+  blocktime.value.slice(0, -3) + ',' + blocktime.value.slice(-3)
+))
+
+onMounted(() => {
+  fetchBlockTime()
+  timer.value = setInterval(fetchBlockTime, 30000)
+})
+
+onBeforeUnmount(() => {
+  if (timer.value) {
+    clearInterval(timer.value)
+  }
+})
 </script>
 
 <style lang="scss" scoped>

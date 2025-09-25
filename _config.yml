@@ -41,7 +41,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - package.lock.json
   - package.json
   - webpack.config.babel.js
   - src

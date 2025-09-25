@@ -1,7 +1,7 @@
-  const execa = require("execa");
   const fs = require("fs");
 
   (async () => {
+    const { execa } = await import("execa");
     try {
       await execa("git", ["checkout", "--orphan", "gh-pages"]);
       console.log("Building...");

@@ -22,9 +22,10 @@ export default {
         const response = await axios.get('https://mempool.space/api/blocks/tip/height', {
           headers: {
             'Accept': 'text/plain'
-          }
+          },
+          transformResponse: [data => data]
         })
-        this.blocktime = response.data.toString()
+        this.blocktime = response.data
       } catch (error) {
         console.error('Failed to fetch block height', error)
       }
